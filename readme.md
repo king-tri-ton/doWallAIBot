@@ -1,3 +1,5 @@
+![Screenshot_6](https://github.com/king-tri-ton/doWallAIBot/assets/53092931/f010cf7a-0940-4fed-8387-e237ad487f15)
+
 **Телеграм-бот для создания обоев на основе текстового описания с использованием OpenAI API**
 
 ---
