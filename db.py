@@ -14,7 +14,7 @@ def create_tables():
     cursor = conn.cursor()
     cursor.execute('''CREATE TABLE IF NOT EXISTS users (
                         id INTEGER PRIMARY KEY,
-                        tg_id INTEGER
+                        tg_id INTEGER UNIQUE
                     )''')
 
     cursor.execute('''CREATE TABLE IF NOT EXISTS images (
@@ -27,11 +27,14 @@ def create_tables():
     conn.close()
 
 def add_user(tg_id):
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO users (tg_id) VALUES (?)", (tg_id,))
-    conn.commit()
-    conn.close()
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO users (tg_id) VALUES (?)", (tg_id,))
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        print(e)
 
 def add_image(tg_id, prompt, image_url):
     conn = get_connection()
