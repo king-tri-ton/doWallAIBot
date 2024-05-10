@@ -81,13 +81,13 @@
 
 - `bot.py`
     - Изменен импорт функций <strong>generate_image_url</strong> и <strong>download_and_send_image</strong> из файла <strong>functions.py</strong>.
-    - Изменен импорт <strong>db</strong> на <strong>db_manager<strong> из файла <strong>db.py</strong>.
+    - Изменен импорт <strong>db</strong> на <strong>db_manager</strong> из файла <strong>db.py</strong>.
     - Вместо прямого вызова функций из модуля <strong>db</strong>, теперь используется метод <strong>create_tables()</strong> экземпляра <strong>db_manager</strong>.
     - Вместо прямого вызова функции <strong>add_user</strong> из модуля <strong>db</strong>, теперь используется метод <strong>add_user()</strong> экземпляра <strong>db_manager</strong>.
     - Вместо прямого вызова функции <strong>get_total_users</strong> из модуля <strong>db</strong>, теперь используется метод <strong>get_total_users()</strong> экземпляра <strong>db_manager</strong>.
     - Функция <strong>generate_image()</strong> была изменена на метод с тем же именем, и теперь использует функции из файла <strong>functions.py</strong>.
 - `db.py`
-    - Добавлен новый класс <strong>DatabaseManager</strong>
+    - Добавлен новый класс <strong>DatabaseManager</strong>.
     - Методы работы с базой данных инкапсулированы внутри этого класса.
     - Добавлена инициализация объекта <strong>DatabaseManager</strong> с указанием имени базы данных по умолчанию.
     - Использование блокировки (<strong>Lock</strong>) для защиты от потоковых проблем при одновременном доступе к базе данных.
