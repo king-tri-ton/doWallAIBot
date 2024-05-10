@@ -1,0 +1,8 @@
+/__pycache__
+/__pycache__/*.py
+/images
+/images/*.png
+/img
+/img/*.png
+*.db
+config.py
