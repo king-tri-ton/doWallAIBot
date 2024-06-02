@@ -5,27 +5,30 @@ import requests
 import time
 import os
 
-# Инициализация клиента OpenAI
+# Initializing the OpenAI client
 client = OpenAI(api_key=AI_TOKEN)
 
-def generate_image_url(text):
+def generate_image_url(text, size, quality):
     try:
         response = client.images.generate(
             model="dall-e-3",
             prompt=text,
-            size="1024x1024", # 1024x1024, 1024x1792, 1792x1024
-            quality="standard", # standard, hd
+            size=size,
+            quality=quality,
             n=1,
         )
         print(response.data[0].url)
         return response.data[0].url
+        ## TESTING
+        # return "https://via.placeholder.com/1024x1024"
     except Exception as e:
-        # Обработка ошибок, если произошла ошибка при генерации изображения
+        # Error handling if an error occurred during image generation
         print(f"Error generating image: {str(e)}")
         return None
 
+
 def download_image(image_url, save_path):
-    # Попытка загрузки изображения с повторными попытками при ошибке
+    # Attempting to load an image with retries on error
     retries = 3
     for _ in range(retries):
         try:
@@ -35,29 +38,29 @@ def download_image(image_url, save_path):
                         f.write(r.content)
                     return True
                 else:
-                    raise Exception("Не удалось загрузить изображение.")
+                    raise Exception("Failed to load image.")
         except Exception as e:
-            print(f"Ошибка при загрузке изображения: {str(e)}")
+            print(f"Error loading image: {str(e)}")
             time.sleep(1)  # Подождать перед повторной попыткой
     else:
-        print("Не удалось загрузить изображение.")
+        print("Failed to load image.")
         return False
 
-def send_image(bot, message, image_path):
-    # Отправка изображения пользователю
+def send_image(bot, message, text, image_path):
+    # Sending an image to a user
     with open(image_path, 'rb') as photo:
         bot.send_photo(message.chat.id, photo, reply_to_message_id=message.message_id)
 
-    # Запись данных об изображении в базу данных
-    db_manager.add_image(message.chat.id, message.text, image_path)
+    # Writing image data to a database
+    db_manager.add_image(message.chat.id, text, image_path)
 
-def download_and_send_image(bot, message, image_url):
+def download_and_send_image(bot, message, text, image_url):
     if image_url is None:
-        bot.send_message(message.chat.id, "Не удалось создать изображение.")
+        bot.send_message(message.chat.id, "Failed to create image.")
         return
 
-    # Скачивание изображения и сохранение в папку images
+    # Downloading an image and saving it to the images folder
     image_path = os.path.join(IMAGE_FOLDER, f"{message.chat.id}_{message.message_id}.png")
     
     if download_image(image_url, image_path):
-        send_image(bot, message, image_path)
+        send_image(bot, message, text, image_path)

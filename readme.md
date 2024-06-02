@@ -1,41 +1,41 @@
 ![Screenshot_6](https://github.com/king-tri-ton/doWallAIBot/assets/53092931/f010cf7a-0940-4fed-8387-e237ad487f15)
 
-**Телеграм-бот для создания обоев на основе текстового описания с использованием OpenAI API**
+**Telegram Bot for Generating Images Based on Text Description Using OpenAI API**
 
 ---
 
-Это телеграм-бот предназначен для создания обоев для устройств на основе текстового описания, используя модель генерации изображений от OpenAI. Пользователи могут отправлять текстовые описания, а бот использует API OpenAI для генерации изображений, которые затем отправляются обратно пользователю в качестве обоев.
+This Telegram bot is designed to generate images based on textual descriptions using the image generation model from OpenAI. Users can send textual descriptions, and the bot uses the OpenAI API to generate images, which are then sent back to the user as an image file.
 
 ---
 
-**Установка и настройка:**
+**Installation and Setup:**
 
-1. **Установите зависимости:**
+1. **Install Dependencies:**
 
-   Перед началом использования убедитесь, что у вас установлены все необходимые зависимости. Вы можете установить их, выполнив следующую команду:
+   Before using, make sure you have all the necessary dependencies installed. You can install them by running the following command:
 
    ```
    pip install -r requirements.txt
    ```
 
-2. **Регистрация бота в Telegram:**
+2. **Register Bot on Telegram:**
 
-   - Зарегистрируйте нового бота в Telegram, следуя инструкциям [здесь](https://core.telegram.org/bots#botfather).
-   - Получите токен бота от BotFather и сохраните его.
+   - Register a new bot on Telegram following the instructions [here](https://core.telegram.org/bots#botfather).
+   - Obtain the bot token from BotFather and save it.
 
-3. **Получение API-ключа OpenAI:**
+3. **Get OpenAI API Key:**
 
-   - Зарегистрируйтесь на [сайте OpenAI](https://openai.com/).
-   - Получите API-ключ, выбрав нужный тарифный план.
+   - Register on the [OpenAI website](https://openai.com/).
+   - Obtain the API key by choosing the appropriate pricing plan.
 
-4. **Настройка файла конфигурации:**
+4. **Configure Configuration File:**
 
-   - Создайте файл `config.py` на основе `exp.config.py`.
-   - Заполните поля `AI_TOKEN` (API-ключ OpenAI), `BOT_TOKEN` (токен бота Telegram) и `ADMIN_ID` (ID администратора бота).
+   - Create a `config.py` file based on `exp.config.py`.
+   - Fill in the fields `AI_TOKEN` (OpenAI API key), `BOT_TOKEN` (Telegram bot token), and `ADMIN_ID` (bot administrator's ID).
 
-5. **Запуск бота:**
+5. **Run the Bot:**
 
-   - После настройки всех необходимых параметров запустите файл `bot.py`:
+   - After configuring all necessary parameters, run the `bot.py` file:
 
    ```
    python bot.py
@@ -43,84 +43,97 @@
 
 ---
 
-**Использование:**
+**Usage:**
 
-1. **Команда /start:**
+1. **Command /start:**
 
-   - Начните общение с ботом, отправив команду `/start`.
-   - После выполнения этой команды бот начнет ожидать от вас текстовое описание для создания обоев.
+   - Begin interacting with the bot by sending the command `/start`.
+   - After executing this command, the bot will wait for you to send a textual description to generate an image.
 
-2. **Отправка текстового описания:**
+2. **Sending Text Description:**
 
-   - После отправки команды `/start` отправьте боту текстовое описание, которое вы хотите преобразовать в обои.
-   - Бот начнет процесс генерации изображения на основе вашего описания.
+   - After sending the `/start` command, send the bot a textual description you want to convert into an image.
+   - The bot will initiate the image generation process based on your description.
 
-3. **Команда /stats:**
+3. **Command /stats:**
 
-   - Для получения статистики использования бота отправьте команду `/stats`.
-   - Эта команда доступна только администратору бота.
+   - To get usage statistics of the bot, send the command `/stats`.
+   - This command is only available to the bot administrator.
 
-4. **Получение обоев:**
+4. **Receiving the Image:**
 
-   - После генерации изображения бот отправит вам результат в виде обоев для вашего устройства.
-
----
-
-**Примечание:**
-
-- Перед использованием убедитесь, что у вас установлены все необходимые библиотеки и вы заполнили файл `config.py` корректно.
-- Пожалуйста, обратите внимание, что использование OpenAI API может потребовать дополнительных платежей в зависимости от вашего тарифного плана.
-- Этот бот предоставляется "как есть" без каких-либо гарантий или обязательств. Вы используете его на свой страх и риск.
+   - After generating the image, the bot will send you the result as an image file.
 
 ---
 
-## Changelog (Журнал событий)
+**Note:**
+
+- Before usage, ensure all necessary libraries are installed, and you have correctly filled in the `config.py` file.
+- Please note that using the OpenAI API may incur additional charges depending on your pricing plan.
+- This bot is provided "as is" without any warranties or obligations. You use it at your own risk.
+
+---
+
+## Changelog
 
 <details>
-<summary><strong>Версия 2.0.2</strong></summary>
+<summary><strong>Version 3.0.0</strong></summary>
 
 - `bot.py`
-    - Изменен импорт функций <strong>generate_image_url</strong> и <strong>download_and_send_image</strong> из файла <strong>functions.py</strong>.
-    - Изменен импорт <strong>db</strong> на <strong>db_manager</strong> из файла <strong>db.py</strong>.
-    - Вместо прямого вызова функций из модуля <strong>db</strong>, теперь используется метод <strong>create_tables()</strong> экземпляра <strong>db_manager</strong>.
-    - Вместо прямого вызова функции <strong>add_user</strong> из модуля <strong>db</strong>, теперь используется метод <strong>add_user()</strong> экземпляра <strong>db_manager</strong>.
-    - Вместо прямого вызова функции <strong>get_total_users</strong> из модуля <strong>db</strong>, теперь используется метод <strong>get_total_users()</strong> экземпляра <strong>db_manager</strong>.
-    - Функция <strong>generate_image()</strong> была изменена на метод с тем же именем, и теперь использует функции из файла <strong>functions.py</strong>.
-- `db.py`
-    - Добавлен новый класс <strong>DatabaseManager</strong>.
-    - Методы работы с базой данных инкапсулированы внутри этого класса.
-    - Добавлена инициализация объекта <strong>DatabaseManager</strong> с указанием имени базы данных по умолчанию.
-    - Использование блокировки (<strong>Lock</strong>) для защиты от потоковых проблем при одновременном доступе к базе данных.
-    - Операции с базой данных выполняются в контексте блокировки (<strong>with self.lock</strong>), обеспечивая безопасность при параллельном доступе.
+    - Added handling for selecting image size and quality for text description.
+    - Modified text message handler to consider the choice of image size and quality.
+    - Added new functions: `process_text_description`, `generate_size_keyboard`, `process_size_selection`, `generate_quality_keyboard`, `process_quality_selection`.
+    - Updated image generation handler to take into account the selected size and quality.
+  
 - `functions.py`
-    - Функция <strong>generate_image_url()</strong> теперь возвращает URL сгенерированного изображения вместо его отправки.
-    - Добавлена функция <strong>download_image()</strong>, которая загружает изображение по URL и сохраняет его на диск.
-    - Добавлена функция <strong>send_image()</strong>, которая отправляет изображение пользователю и записывает данные об изображении в базу данных через экземпляр <strong>db_manager</strong>.
-    - Добавлена функция <strong>download_and_send_image()</strong>, которая сначала загружает изображение, затем отправляет его пользователю и записывает данные об изображении в базу данных через экземпляр <strong>db_manager</strong>.
+    - Changed signature of `generate_image_url` function to now accept additional parameters `size` and `quality`.
+    - Updated `download_and_send_image` function to pass text description along with the image.
+</details>
+
+
+<details>
+<summary><strong>Version 2.0.2</strong></summary>
+
+- `bot.py`
+    - Changed import of functions <strong>generate_image_url</strong> and <strong>download_and_send_image</strong> from the file <strong>functions.py</strong>.
+    - Changed import of <strong>db</strong> to <strong>db_manager</strong> from the file <strong>db.py</strong>.
+    - Instead of directly calling functions from the <strong>db</strong> module, now use the <strong>create_tables()</strong> method of <strong>db_manager</strong> instance.
+    - Instead of directly calling the <strong>add_user</strong> function from the <strong>db</strong> module, now use the <strong>add_user()</strong> method of <strong>db_manager</strong> instance.
+    - Instead of directly calling the <strong>get_total_users</strong> function from the <strong>db</strong> module, now use the <strong>get_total_users()</strong> method of <strong>db_manager</strong> instance.
+    - The <strong>generate_image()</strong> function was changed to a method with the same name, now using functions from the <strong>functions.py</strong> file.
+- `db.py`
+    - Added a new class <strong>DatabaseManager</strong>.
+    - Database operations are encapsulated within this class.
+    - Initialized the <strong>DatabaseManager</strong> object with the default database name.
+    - Use locking (<strong>Lock</strong>) to prevent threading issues when accessing the database simultaneously.
+    - Database operations are performed within the lock context (<strong>with self.lock</strong>), ensuring safety during parallel access.
+- `functions.py`
+    - The <strong>generate_image_url()</strong> function now returns the URL of the generated image instead of sending it.
+    - Added the <strong>download_image()</strong> function, which downloads the image from a URL and saves it to disk.
+    - Added the <strong>send_image()</strong> function, which sends the image to the user and records image data in the database via the <strong>db_manager</strong> instance.
+    - Added the <strong>download_and_send_image()</strong> function, which first downloads the image, then sends it to the user, and records image data in the database via the <strong>db_manager</strong> instance.
 </details>
 
 <details>
-<summary><strong>Версия 2.0.0</strong></summary>
+<summary><strong>Version 2.0.0</strong></summary>
 
 - `exp.config.py`
-    - <strong>Добавлена</strong> переменная `IMAGE_FOLDER` которая содержит путь к папке для сохранения изображений.
+    - <strong>Added</strong> variable `IMAGE_FOLDER` containing the path to the folder for saving images.
 - `bot.py`
-    - <strong>Добавлена</strong> проверка длины входящего текстового сообщения перед его обработкой, чтобы убедиться, что текст не менее 10 символов.
-    - <strong>Добавлена</strong> проверка на возникновение исключений при генерации изображения с использованием OpenAI. В случае возникновения ошибки, пользователю отправляется сообщение с просьбой повторить запрос или связаться с разработчиком.
-    - <strong>Изменена</strong> логика сохранения изображения: теперь изображение скачивается и сохраняется в указанную папку `images` с именем в формате `<tg_id>_<message_id>.png`.
-    - <strong>Изменен</strong> метод отправки изображения пользователю: теперь изображение отправляется как файловый объект, а не по URL.
+    - <strong>Added</strong> validation of the incoming text message length before processing to ensure the text is at least 10 characters long.
+    - <strong>Added</strong> exception handling for errors that may occur during image generation using OpenAI. In case of an error, a message is sent to the user requesting to retry the request or contact the developer.
+    - <strong>Changed</strong> the logic of image saving: now the image is downloaded and saved in the specified `images` folder with a name in the format `<tg_id>_<message_id>.png`.
+    - <strong>Changed</strong> the method of sending the image to the user: now the image is sent as a file object rather than via URL.
 - `db.py`
-    - В функции `add_user(tg_id)` добавлена обработка исключений для предотвращения возможных ошибок при добавлении пользователя в базу данных.
+    - Added exception handling in the `add_user(tg_id)` function to prevent potential errors when adding a user to the database.
 </details>
 
 ---
 
-**Лицензия:**
+**License:**
 
-Этот проект распространяется под лицензией [MIT](https://choosealicense.com/licenses/mit/).
+This project is distributed under the [MIT License](https://choosealicense.com/licenses/mit/).
 
 ---
 
-Если у вас возникли вопросы или предложения по улучшению проекта, не стесняйтесь связаться со мной по адресу mdolmatov99@gmail.com или телеграм [@king_triton](https://t.me/king_triton). Благодарю за использование моего бота!
-
-
+If you have any questions or suggestions for improving the project, feel free to contact me at mdolmatov99@gmail.com or via Telegram [@king_triton](https://t.me/king_triton). Thank you for using my bot!

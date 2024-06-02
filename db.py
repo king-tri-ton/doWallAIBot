@@ -55,5 +55,5 @@ class DatabaseManager:
             conn.close()
             return total_users
 
-# Создание экземпляра менеджера базы данных
+# Creating a Database Manager Instance
 db_manager = DatabaseManager()
