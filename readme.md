@@ -1,6 +1,4 @@
-
-https://github.com/king-tri-ton/doWallAIBot/assets/53092931/b3c52eb5-88fa-415e-a546-0de9970e4a9f
-
+![0602](https://github.com/king-tri-ton/doWallAIBot/assets/53092931/8b407d46-f0e9-4cab-9db8-af726a8fb107)
 
 **Telegram Bot for Generating Images Based on Text Description Using OpenAI API**
 
