@@ -6,3 +6,4 @@
 /img/*.png
 *.db
 config.py
+test.py
