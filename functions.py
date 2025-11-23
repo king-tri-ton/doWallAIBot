@@ -5,7 +5,6 @@ import requests
 import time
 import os
 
-# Initializing the OpenAI client
 client = OpenAI(api_key=AI_TOKEN)
 
 def generate_image_url(text, size, quality):

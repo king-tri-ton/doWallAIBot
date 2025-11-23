@@ -5,5 +5,5 @@
 /img
 /img/*.png
 *.db
-config.py
 test.py
+.env

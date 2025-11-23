@@ -17,7 +17,7 @@ def send_welcome(message):
     bot.reply_to(message, "Hello! I can create an image from a text description.")
 
 # /stats command handler
-@bot.message_handler(commands=['stats'])
+@bot.message_handler(commands=['stat'])
 def show_stats(message):
     # Checking if a user is an administrator
     if message.from_user.id == ADMIN_ID:
